@@ -1,0 +1,7 @@
+.archive-clue { max-width: 680px; }
+.archive-clue .next-scene { position: static; transform: none; margin-left: auto; flex: 0 0 auto; }
+@media (max-width: 700px) {
+  .archive-clue { flex-wrap: wrap; }
+  .archive-clue .next-scene { width: 100%; margin: 4px 0 0; }
+  .archive-clue div { flex: 1; }
+}

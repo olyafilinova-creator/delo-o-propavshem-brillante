@@ -1,0 +1,57 @@
+/* Visibility is toggled by the flashlight without changing card geometry. */
+.problem-card {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.problem-card.is-found {
+  opacity: 1;
+  pointer-events: auto;
+  animation: found .4s ease-out;
+}
+
+/* Round detective tokens for the arithmetic clues. */
+.problem-card {
+  width: 158px;
+  height: 158px;
+  padding: 18px 12px;
+  border: 3px dashed #b37724;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 36% 28%, #fffef5 0 26%, #fff3ce 70%, #f1d696 100%);
+}
+.problem-card::before {
+  content: '✦';
+  position: absolute;
+  top: 15px;
+  right: 26px;
+  color: #d9992a;
+  font-size: 13px;
+}
+.problem-card strong { margin: 7px 0 5px; font-size: 21px; }
+.problem-card i { max-width: 95px; line-height: 1.1; }
+.problem-card.done { background: radial-gradient(circle at 36% 28%, #fbfff6, #cceecb); }
+
+/* Ten distinct hiding spots, leaving the display case and Fox readable. */
+.card-five { top: 16%; left: 52%; transform: rotate(3deg); }
+.card-six { top: 60%; left: 48%; transform: rotate(-4deg); }
+.card-seven { top: 47%; left: 13%; transform: rotate(-2deg); }
+.card-eight { top: 15%; right: 7%; transform: rotate(4deg); }
+.card-nine { right: 8%; bottom: 34%; transform: rotate(-3deg); }
+.card-ten { right: 14%; bottom: 8%; transform: rotate(4deg); }
+
+@media (max-width: 700px) {
+  .problem-card { width: 124px; height: 124px; padding: 12px 8px; }
+  .problem-card strong { font-size: 18px; margin: 5px 0 3px; }
+  .problem-card::before { top: 11px; right: 21px; }
+  .card-five { top: 21%; left: 8%; }
+  .card-six { top: 66%; left: 49%; }
+  .card-seven { top: 43%; left: 4%; }
+  .card-eight { top: 14%; right: 4%; }
+  .card-nine { right: 2%; bottom: 30%; }
+  .card-ten { right: 13%; bottom: 6%; }
+}

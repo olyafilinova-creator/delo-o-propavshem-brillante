@@ -1,0 +1,7 @@
+.video-clue { max-width: 680px; }
+.video-clue .next-scene { position: static; transform: none; margin-left: auto; flex: 0 0 auto; }
+@media (max-width: 700px) {
+  .video-clue { flex-wrap: wrap; }
+  .video-clue .next-scene { width: 100%; margin: 4px 0 0; }
+  .video-clue div { flex: 1; }
+}

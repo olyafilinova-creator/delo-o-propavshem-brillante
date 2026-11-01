@@ -1,0 +1,21 @@
+/* The detailed illustration is kept separate from game UI styles. */
+.museum {
+  background: #071121 url('../images/museum-hall.png') center center / cover no-repeat;
+}
+.museum > * { display: none; }
+
+/* A true transparent opening in the darkness reveals the illustration. */
+.darkness {
+  --light-x: 50%;
+  --light-y: 48%;
+  background: radial-gradient(circle 235px at var(--light-x) var(--light-y), transparent 0 28%, #01050dab 67%, #01050df0 100%);
+}
+.flashlight {
+  width: 470px;
+  height: 470px;
+  background: radial-gradient(circle at 50% 50%, #fff6bb18 0 11%, #ffe18b0c 42%, transparent 68%);
+  mix-blend-mode: screen;
+}
+@media (max-width: 700px) {
+  .darkness { background: radial-gradient(circle 165px at var(--light-x) var(--light-y), transparent 0 28%, #01050dab 67%, #01050df0 100%); }
+}

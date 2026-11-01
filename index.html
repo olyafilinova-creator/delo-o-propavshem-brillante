@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091427">
+  <title>Дело о пропавшем бриллианте — Эпизод 1</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/overrides.css">
+  <link rel="stylesheet" href="css/museum-background.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/intro-overrides.css">
+  <link rel="stylesheet" href="css/surveillance.css">
+  <link rel="stylesheet" href="css/chapters.css">
+  <link rel="stylesheet" href="css/interrogation.css">
+  <link rel="stylesheet" href="css/interrogation-overrides.css">
+  <link rel="stylesheet" href="css/archive.css">
+  <link rel="stylesheet" href="css/archive-overrides.css">
+  <link rel="stylesheet" href="css/archive-expression-overrides.css">
+  <link rel="stylesheet" href="css/workshop.css">
+  <link rel="stylesheet" href="css/workshop-overrides.css">
+  <link rel="stylesheet" href="css/tower.css">
+  <link rel="stylesheet" href="css/finale.css">
+  <link rel="stylesheet" href="css/enhancements.css">
+</head>
+<body>
+  <section id="introScreen" class="intro-screen" aria-label="Вступление к делу">
+    <div class="intro-stage" aria-hidden="true"><div class="intro-fox"><img src="images/lis-detektiv.png" alt=""></div></div>
+    <header class="intro-header"><span>◆ ДЕТЕКТИВНОЕ АГЕНТСТВО</span><b>Дело № 1</b></header>
+    <div class="intro-card">
+      <article class="story-page active" data-page="1">
+        <span class="eyebrow">ВЕЧЕР В ГОРОДСКОМ МУЗЕЕ</span>
+        <h1>Дело о пропавшем бриллианте</h1>
+        <p>Сегодня в музее должна была открыться выставка редких драгоценностей. Но главный экспонат — Голубой бриллиант — исчез прямо из запертой витрины!</p>
+        <button class="intro-button" type="button" data-next>Узнать, что случилось</button>
+      </article>
+      <article class="story-page" data-page="2">
+        <span class="eyebrow">У ВИТРИНЫ</span>
+        <h2>На месте остался только след</h2>
+        <p>Свет мигнул — и бриллиант пропал. У витрины мелькнула тонкая голубая лента. Запомним её: возможно, она станет важной уликой.</p>
+        <button id="storyClue" class="story-ribbon" type="button" aria-label="Рассмотреть голубую ленту"><span></span><b>Рассмотреть ленту</b></button>
+        <p id="cluePrompt" class="clue-prompt" aria-live="polite">Нажми на ленту, чтобы запомнить её.</p>
+        <button id="toBriefing" class="intro-button" type="button" data-next disabled>Продолжить</button>
+      </article>
+      <article class="story-page" data-page="3">
+        <span class="eyebrow">ЗАДАНИЕ ДЕТЕКТИВА</span>
+        <h2>Лис берётся за расследование</h2>
+        <p>«В зале темно, но мой фонарик поможет. Будем находить тайные примеры и разгадывать их по одному. Так мы обязательно найдём след похитителя!»</p>
+        <div class="briefing"><span>🔦</span><span>Находи пример</span><b>→</b><span>✎</span><span>Решай</span><b>→</b><span>🧵</span><span>Собирай улики</span></div>
+        <button id="startGame" class="intro-button start-button" type="button">Начать поиски</button>
+      </article>
+      <div class="story-dots" aria-hidden="true"><i class="active"></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <main id="gameShell" class="game-shell hidden" aria-label="Детективная игра «Дело о пропавшем бриллианте»">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◆</span><div><b>Дело о пропавшем бриллианте</b><small id="locationLabel">Эпизод 1 · Тёмный зал музея</small></div></div>
+      <div class="top-actions"><button id="soundButton" class="icon-button" type="button" aria-pressed="false" title="Включить музыку" aria-label="Включить музыку">♪</button><button id="caseButton" class="case-button" type="button">Папка улик <span id="clueCount">0</span></button></div>
+    </header>
+
+    <section id="scene" class="scene" aria-label="Тёмный зал музея. Ведите лучом фонарика по залу.">
+      <div class="museum" aria-hidden="true">
+        <div class="ceiling"></div><div class="arch arch-left"></div><div class="arch arch-right"></div>
+        <div class="painting painting-left"><i></i></div><div class="painting painting-right"><i></i></div>
+        <div class="pedestal pedestal-left"><span>Древняя ваза</span></div><div class="pedestal pedestal-right"><span>Золотая маска</span></div>
+        <div class="display-case"><div class="diamond-shadow">◆</div><p>Витрина бриллианта</p><em>Пусто…</em></div>
+        <div class="floor"></div>
+      </div>
+      <div id="flashlight" class="flashlight" aria-hidden="true"></div>
+      <div id="darkness" class="darkness"></div>
+      <section id="museumChapter" class="chapter-card" aria-label="Глава 1. Тёмный зал музея">
+        <span class="eyebrow">ГЛАВА 1 · ТЁМНЫЙ ЗАЛ МУЗЕЯ</span><h2>Первый след</h2>
+        <p>Лис распахнул тяжёлую дверь музея. Витрина с Голубым бриллиантом была пуста, а в зале царила темнота. «Похититель мог оставить подсказки в самых неожиданных местах», — прошептал детектив.</p>
+        <p>«Давай осветим зал и разгадаем тайные примеры. Каждый верный ответ приблизит нас к разгадке».</p>
+        <button id="museumChapterContinue" class="chapter-button" type="button">Зажечь фонарик</button>
+      </section>
+
+      <div class="mission-card">
+        <span class="eyebrow">ЗАДАНИЕ ДЕТЕКТИВА</span>
+        <p id="missionText">Проведи фонариком по залу и найди 10 тайных примеров.</p>
+        <div class="progress"><span id="progressBar"></span></div><b id="progressText">Разгадано: 0 из 10</b>
+      </div>
+
+      <div id="fox" class="fox-wrap"><img src="images/lis-detektiv.png" alt="Лис-детектив в синем пальто"><div class="fox-bubble">Я освещу путь!<br><small>Ищи карточки с примерами.</small></div></div>
+
+      <button class="problem-card card-one" data-id="p01" style="visibility:hidden" type="button" aria-label="Тайный пример 1"><span>ТАЙНЫЙ ПРИМЕР</span><strong>7 × 8 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-two" data-id="p02" style="visibility:hidden" type="button" aria-label="Тайный пример 2"><span>ТАЙНЫЙ ПРИМЕР</span><strong>42 : 7 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-three" data-id="p03" style="visibility:hidden" type="button" aria-label="Тайный пример 3"><span>ТАЙНЫЙ ПРИМЕР</span><strong>7 × 9 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-four" data-id="p04" style="visibility:hidden" type="button" aria-label="Тайный пример 4"><span>ТАЙНЫЙ ПРИМЕР</span><strong>8 × 9 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-five" data-id="p05" style="visibility:hidden" type="button" aria-label="Тайный пример 5"><span>ТАЙНЫЙ ПРИМЕР</span><strong>7 × 7 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-six" data-id="p06" style="visibility:hidden" type="button" aria-label="Тайный пример 6"><span>ТАЙНЫЙ ПРИМЕР</span><strong>64 : 8 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-seven" data-id="p07" style="visibility:hidden" type="button" aria-label="Тайный пример 7"><span>ТАЙНЫЙ ПРИМЕР</span><strong>6 × 8 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-eight" data-id="p08" style="visibility:hidden" type="button" aria-label="Тайный пример 8"><span>ТАЙНЫЙ ПРИМЕР</span><strong>63 : 9 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-nine" data-id="p09" style="visibility:hidden" type="button" aria-label="Тайный пример 9"><span>ТАЙНЫЙ ПРИМЕР</span><strong>6 × 9 = ?</strong><i>Нажми, чтобы ответить</i></button>
+      <button class="problem-card card-ten" data-id="p10" style="visibility:hidden" type="button" aria-label="Тайный пример 10"><span>ТАЙНЫЙ ПРИМЕР</span><strong>72 : 8 = ?</strong><i>Нажми, чтобы ответить</i></button>
+
+      <button id="ribbon" class="ribbon hidden" type="button" aria-label="Голубая лента — улика"><span></span><b>Голубая лента</b><small>Найденная улика</small></button>
+      <div id="lightMessage" class="light-message hidden"><span>✦</span><div><b>Зал освещён!</b><p>Посмотри внимательнее: что это у витрины?</p></div></div>
+      <button id="toSurveillance" class="next-scene hidden" type="button">Перейти в комнату видеонаблюдения <span>→</span></button>
+      <p class="touch-tip">Веди пальцем или мышкой по залу</p>
+    </section>
+
+    <section id="surveillanceScene" class="surveillance-scene hidden" aria-label="Комната видеонаблюдения">
+      <div class="surveillance-background" aria-hidden="true"></div>
+      <section id="surveillanceChapter" class="chapter-card surveillance-chapter" aria-label="Глава 2. Комната видеонаблюдения">
+        <span class="eyebrow">ГЛАВА 2 · КОМНАТА ВИДЕОНАБЛЮДЕНИЯ</span><h2>Записи, которые не хотят говорить</h2>
+        <p>Голубая лента привела Лиса к комнате видеонаблюдения. На мониторах мерцали четыре записи — в ту ночь камеры отключались одна за другой.</p>
+        <p>«Если мы узнаем длительность каждой паузы и восстановим правильный порядок записей, камера покажет, куда ушёл похититель», — сказал Лис.</p>
+        <button id="surveillanceChapterContinue" class="chapter-button" type="button">Открыть записи камер</button>
+      </section>
+      <div class="surveillance-top">
+        <span class="eyebrow">ЭПИЗОД 2 · КОМНАТА ВИДЕОНАБЛЮДЕНИЯ</span>
+        <h1>Расставь записи по длительности</h1>
+        <p id="surveillanceMission">Реши выражение на каждом экране. Затем расположи записи от самой короткой к самой длинной.</p>
+      </div>
+      <div class="monitor-task monitor-one" data-time-task="t1"><span>КАМЕРА 01</span><b>1 ч − 40 мин</b><i>Нажми, чтобы вычислить</i></div>
+      <div class="monitor-task monitor-two" data-time-task="t2"><span>КАМЕРА 02</span><b>1 ч − 20 мин</b><i>Нажми, чтобы вычислить</i></div>
+      <div class="monitor-task monitor-three" data-time-task="t3"><span>КАМЕРА 03</span><b>50 мин + 5 мин</b><i>Нажми, чтобы вычислить</i></div>
+      <div class="monitor-task monitor-four" data-time-task="t4"><span>КАМЕРА 04</span><b>30 мин + 35 мин</b><i>Нажми, чтобы вычислить</i></div>
+      <section id="orderingPanel" class="ordering-panel hidden" aria-label="Расставить записи по длительности">
+        <span class="eyebrow">ПОРЯДОК ЗАПИСЕЙ</span><h2>Нажимай от самой короткой записи к самой длинной</h2>
+        <div id="recordChoices" class="record-choices">
+          <button type="button" data-order-id="t3">Камера 03 · 55 мин</button>
+          <button type="button" data-order-id="t1">Камера 01 · 20 мин</button>
+          <button type="button" data-order-id="t4">Камера 04 · 1 ч 5 мин</button>
+          <button type="button" data-order-id="t2">Камера 02 · 40 мин</button>
+        </div><p id="orderFeedback" aria-live="polite"></p>
+      </section>
+      <section id="videoClue" class="video-clue hidden"><span>●</span><div><b>Запись восстановлена!</b><p>На последнем кадре видно: человек с голубой лентой направился в кабинет допросов.</p></div><button id="toInterrogation" class="next-scene hidden" type="button">Идти в кабинет допросов <span>→</span></button></section>
+    </section>
+
+    <section id="interrogationScene" class="interrogation-scene hidden" aria-label="Кабинет допросов">
+      <div class="interrogation-background" aria-hidden="true"></div>
+      <section id="interrogationChapter" class="chapter-card interrogation-chapter" aria-label="Глава 3. Кабинет допросов">
+        <span class="eyebrow">ГЛАВА 3 · КАБИНЕТ ДОПРОСОВ</span><h2>Три показания и один ключ</h2>
+        <p>На записи мелькнул силуэт с голубой лентой. Лис пригласил Лину, Бориса и Федота: никто не обвинён, но детали их рассказов могут привести к следующему следу.</p>
+        <p>Проверь номера в показаниях. Когда все три детали совпадут, откроется закрытый ящик.</p>
+        <button id="interrogationChapterContinue" class="chapter-button" type="button">Начать беседу</button>
+      </section>
+      <div class="interrogation-heading"><span class="eyebrow">ЭПИЗОД 3 · КАБИНЕТ ДОПРОСОВ</span><h1>Проверь показания</h1><p id="interrogationMission">Выбери помощника и вычисли номер из его рассказа.</p></div>
+      <div class="suspect-tabs" role="group" aria-label="Выбрать помощника">
+        <button class="suspect-tab" data-suspect="lina" type="button"><img src="images/belka-lina.png" alt="Белка Лина"><b>Лина</b><small>Показание 1</small></button>
+        <button class="suspect-tab" data-suspect="boris" type="button"><img src="images/bobr-boris.png" alt="Бобр Борис"><b>Борис</b><small>Показание 2</small></button>
+        <button class="suspect-tab" data-suspect="fedot" type="button"><img src="images/filin-fedot.png" alt="Филин Федот"><b>Федот</b><small>Показание 3</small></button>
+      </div>
+      <section id="testimonyPanel" class="testimony-panel hidden" aria-live="polite"><span id="testimonyLabel" class="eyebrow"></span><h2 id="testimonyName"></h2><p id="testimonyText"></p><button id="solveTestimony" class="chapter-button" type="button">Проверить номер</button></section>
+      <button id="lockedDrawer" class="locked-drawer hidden" type="button"><span>▣</span><b>Закрытый ящик</b><small>Нужен код</small></button>
+      <section id="archiveClue" class="archive-clue hidden"><span>✦</span><div><b>Папка №17 найдена!</b><p>В ящике лежит заявка на выдачу архивной папки. След похитителя ведёт в музейный архив.</p></div><button id="toArchive" class="next-scene hidden" type="button">Идти в музейный архив <span>→</span></button></section>
+    </section>
+
+    <section id="archiveScene" class="archive-scene hidden" aria-label="Музейный архив">
+      <div class="archive-background" aria-hidden="true"></div>
+      <section id="archiveChapter" class="chapter-card archive-chapter" aria-label="Глава 4. Музейный архив">
+        <span class="eyebrow">ГЛАВА 4 · МУЗЕЙНЫЙ АРХИВ</span><h2>Шифры на карточках</h2>
+        <p>Папка №17 привела Лиса в тихий архив. На её карточках записаны выражения — это коды, которые защищают шкаф с важными документами.</p>
+        <button id="archiveChapterContinue" class="chapter-button" type="button">Открыть каталог</button>
+      </section>
+      <div class="archive-heading"><span class="eyebrow">ЭПИЗОД 4 · МУЗЕЙНЫЙ АРХИВ</span><h1>Разгадай архивные шифры</h1><p id="archiveMission">Вычисли значения выражений, соблюдая порядок действий.</p></div>
+      <section id="expressionCards" class="expression-cards" aria-label="Архивные шифры">
+        <button class="archive-expression-card" data-expression="a1" type="button"><span>ШИФР 01</span><b>63 : 9 · 4</b><i>Нажми, чтобы вычислить</i></button>
+        <button class="archive-expression-card" data-expression="a2" type="button"><span>ШИФР 02</span><b>9 · 7 + (50 − 13)</b><i>Нажми, чтобы вычислить</i></button>
+        <button class="archive-expression-card" data-expression="a3" type="button"><span>ШИФР 03</span><b>(72 : 8 + 45) − 19</b><i>Нажми, чтобы вычислить</i></button>
+        <button class="archive-expression-card" data-expression="a4" type="button"><span>ШИФР 04</span><b>(80 − 31) : (32 − 25)</b><i>Нажми, чтобы вычислить</i></button>
+        <button class="archive-expression-card" data-expression="a5" type="button"><span>ШИФР 05</span><b>(30 − 5) : 5 + 55</b><i>Нажми, чтобы вычислить</i></button>
+        <button class="archive-expression-card" data-expression="a6" type="button"><span>ШИФР 06</span><b>100 − 6 · 5</b><i>Нажми, чтобы вычислить</i></button>
+      </section>
+      <section id="finalArchiveClue" class="final-archive-clue hidden"><span>▣</span><div><b>Папка №17 открыта!</b><p>В журнале указано: неизвестный запросил документ о реставрационной мастерской. Там может быть следующий след.</p></div><button id="toWorkshop" class="next-scene hidden" type="button">Идти в мастерскую <span>→</span></button></section>
+    </section>
+
+    <section id="workshopScene" class="workshop-scene hidden" aria-label="Реставрационная мастерская">
+      <div class="workshop-background" aria-hidden="true"></div>
+      <section id="workshopChapter" class="chapter-card workshop-chapter"><span class="eyebrow">ГЛАВА 5 · РЕСТАВРАЦИОННАЯ МАСТЕРСКАЯ</span><h2>Секрет витража</h2><p>В мастерской Лис находит незаконченный витраж. Среди осколков похититель оставил схему — она проявится, только если верно распознать все треугольники.</p><p>Выбирай: прямоугольный, остроугольный или тупоугольный.</p><button id="workshopChapterContinue" class="chapter-button" type="button">Осмотреть осколки</button></section>
+      <div class="workshop-heading"><span class="eyebrow">ЭПИЗОД 5 · РЕСТАВРАЦИОННАЯ МАСТЕРСКАЯ</span><h1>Собери витраж</h1><p id="workshopMission">Нажми на осколок, затем выбери вид треугольника.</p></div>
+      <section id="triangleTiles" class="triangle-tiles" aria-label="Осколки витража">
+        <button class="triangle-tile right" data-type="right" type="button" aria-label="Осколок витража 1"></button><button class="triangle-tile acute" data-type="acute" type="button" aria-label="Осколок витража 2"></button><button class="triangle-tile obtuse" data-type="obtuse" type="button" aria-label="Осколок витража 3"></button><button class="triangle-tile right alt" data-type="right" type="button" aria-label="Осколок витража 4"></button><button class="triangle-tile acute alt" data-type="acute" type="button" aria-label="Осколок витража 5"></button><button class="triangle-tile obtuse alt" data-type="obtuse" type="button" aria-label="Осколок витража 6"></button>
+      </section>
+      <section id="triangleQuestion" class="triangle-question hidden"><b>Какой это треугольник?</b><div><button type="button" data-choice="right">Прямоугольный</button><button type="button" data-choice="acute">Остроугольный</button><button type="button" data-choice="obtuse">Тупоугольный</button></div><p id="triangleFeedback" aria-live="polite"></p></section>
+      <section id="workshopClue" class="workshop-clue hidden"><span>✦</span><div><b>Витраж засиял!</b><p>В отражении Лис видит знакомый силуэт и стрелку к старой башне музея. Расследование продолжается.</p></div><button id="toTower" class="next-scene hidden" type="button">Подняться в старую башню <span>→</span></button></section>
+    </section>
+
+    <section id="towerScene" class="tower-scene hidden" aria-label="Старая башня музея">
+      <div class="tower-background" aria-hidden="true"></div>
+      <section id="towerChapter" class="chapter-card tower-chapter" aria-label="Глава 6. Старая башня музея">
+        <span class="eyebrow">ГЛАВА 6 · СТАРАЯ БАШНЯ МУЗЕЯ</span><h2>Праздничная запись смотрителя</h2>
+        <p>Лис поднимается в старую башню. На площадке под часами его ждёт сундук, а рядом лежит список покупок смотрителя к празднику.</p>
+        <p>«Сундук откроется только правильным кодом. Поможем Лису решить задачу в два действия?»</p>
+        <button id="towerChapterContinue" class="chapter-button" type="button">Осмотреть список</button>
+      </section>
+      <div class="tower-heading"><span class="eyebrow">ЭПИЗОД 6 · СТАРАЯ БАШНЯ</span><h1>Открой сундук</h1><p id="towerMission">Прочитай запись смотрителя и узнай код замка.</p></div>
+      <section id="towerTask" class="tower-task" aria-label="Задача про воздушные шарики">
+        <span class="task-mark">✦</span><span class="eyebrow">ЗАПИСЬ СМОТРИТЕЛЯ</span>
+        <p>К празднику купили <b>9 синих воздушных шариков</b>. Это в <b>3 раза меньше</b>, чем красных. Сколько всего воздушных шариков купили к празднику?</p>
+        <button id="solveTowerTask" class="chapter-button" type="button">Найти код сундука</button>
+      </section>
+      <button id="towerChest" class="tower-chest hidden" type="button"><span>▣</span><b>Старинный сундук</b><small>Нужен код</small></button>
+      <section id="towerFinalClue" class="tower-final-clue hidden"><span>◆</span><div><b>Сундук открыт!</b><p>Внутри — схема тайного прохода и записка: «Бриллиант спрятан там, где часы не идут». Лис понимает: разгадка совсем близко.</p></div><button id="toFinale" class="next-scene hidden" type="button">Найти комнату часов <span>→</span></button></section>
+    </section>
+
+    <section id="finaleScene" class="finale-scene hidden" aria-label="Комната остановившихся часов">
+      <div class="finale-background" aria-hidden="true"></div>
+      <section id="finaleChapter" class="chapter-card finale-chapter" aria-label="Глава 7. Комната остановившихся часов">
+        <span class="eyebrow">ГЛАВА 7 · КОМНАТА ОСТАНОВИВШИХСЯ ЧАСОВ</span><h2>Там, где часы не идут</h2>
+        <p>Схема приводит Лиса к потайной комнате. Все старинные часы здесь остановились, а за стеклом мерцает Голубой бриллиант.</p>
+        <p>Два замка охраняют последний механизм. Лис читает надпись: «Верный ответ откроет путь к сокровищу».</p>
+        <button id="finaleChapterContinue" class="chapter-button" type="button">Решить последнюю задачу</button>
+      </section>
+      <div class="finale-heading"><span class="eyebrow">ФИНАЛ · КОМНАТА ЧАСОВ</span><h1>Верни Голубой бриллиант</h1><p id="finaleMission">Реши задачу, чтобы открыть последний механизм.</p></div>
+      <section id="finaleTask" class="finale-task" aria-label="Последняя задача">
+        <span class="task-mark">♜</span><span class="eyebrow">ЗАМОК ПЕРВОГО ПРИВИДЕНИЯ</span>
+        <p>В одном старинном замке водится <b>9 привидений</b>, а в другом — в <b>3 раза больше</b>. Сколько всего <b>привидений</b> в двух замках?</p>
+        <button id="solveFinaleTask" class="chapter-button" type="button">Открыть механизм</button>
+      </section>
+      <section id="victoryCard" class="victory-card hidden"><span>◆</span><div><span class="eyebrow">МИССИЯ ВЫПОЛНЕНА</span><h2>Голубой бриллиант найден!</h2><p>Лис вернул драгоценность в музей. Ты прошёл все испытания, нашёл улики и помог завершить расследование. Отличная работа, юный детектив!</p><div class="victory-actions"><button id="showClueFolder" class="secondary-victory-button" type="button">Посмотреть улики</button><button id="restartGame" class="chapter-button" type="button">Сыграть ещё раз</button></div></div></section>
+    </section>
+  </main>
+
+  <dialog id="answerDialog" class="answer-dialog">
+    <form method="dialog" id="answerForm">
+      <button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span class="eyebrow">ПРОВЕРКА УЛИКИ</span>
+      <h2 id="problemTitle">7 × 8 = ?</h2><p id="feedback">Впиши ответ — и мы продолжим поиски.</p>
+      <label for="answerInput">Твой ответ</label><input id="answerInput" inputmode="numeric" autocomplete="off" maxlength="3" required>
+      <div class="answer-actions"><button id="hintButton" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div>
+      <p id="hintText" class="hint" aria-live="polite"></p>
+    </form>
+  </dialog>
+  <dialog id="caseDialog" class="case-dialog"><form method="dialog"><button class="dialog-close" value="close" aria-label="Закрыть">×</button><span class="eyebrow">ПАПКА УЛИК</span><h2>Материалы дела</h2><div id="clueList" class="clue-list"><p class="empty-clues">Пока пусто. Исследуй музейный зал.</p></div></form></dialog>
+  <dialog id="timeDialog" class="answer-dialog"><form method="dialog" id="timeForm"><button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span class="eyebrow">ЗАПИСЬ КАМЕРЫ</span><h2 id="timeTitle">1 ч − 40 мин = ?</h2><p id="timeFeedback">Впиши длительность в минутах.</p><label for="timeInput">Твой ответ (в минутах)</label><input id="timeInput" inputmode="numeric" autocomplete="off" maxlength="3" required><div class="answer-actions"><button id="timeHint" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div><p id="timeHintText" class="hint" aria-live="polite"></p></form></dialog>
+  <dialog id="interrogationDialog" class="answer-dialog"><form method="dialog" id="interrogationForm"><button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span id="interrogationDialogLabel" class="eyebrow">ПРОВЕРКА ПОКАЗАНИЯ</span><h2 id="interrogationTitle"></h2><p id="interrogationFeedback">Впиши ответ.</p><label for="interrogationInput">Твой ответ</label><input id="interrogationInput" inputmode="numeric" autocomplete="off" maxlength="3" required><div class="answer-actions"><button id="interrogationHint" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div><p id="interrogationHintText" class="hint" aria-live="polite"></p></form></dialog>
+  <dialog id="archiveDialog" class="answer-dialog"><form method="dialog" id="archiveForm"><button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span class="eyebrow">АРХИВНЫЙ ШИФР</span><h2 id="archiveTitle"></h2><p id="archiveDialogFeedback">Впиши значение выражения.</p><label for="archiveInput">Твой ответ</label><input id="archiveInput" inputmode="numeric" autocomplete="off" maxlength="3" required><div class="answer-actions"><button id="archiveHint" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div><p id="archiveHintText" class="hint" aria-live="polite"></p></form></dialog>
+  <dialog id="towerDialog" class="answer-dialog"><form method="dialog" id="towerForm"><button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span class="eyebrow">КОД СУНДУКА</span><h2>Сколько всего шариков?</h2><p id="towerFeedback">Впиши число — это и будет код замка.</p><label for="towerInput">Твой ответ</label><input id="towerInput" inputmode="numeric" autocomplete="off" maxlength="3" required><div class="answer-actions"><button id="towerHint" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div><p id="towerHintText" class="hint" aria-live="polite"></p></form></dialog>
+  <dialog id="finaleDialog" class="answer-dialog"><form method="dialog" id="finaleForm"><button class="dialog-close" value="cancel" aria-label="Закрыть">×</button><span class="eyebrow">ПОСЛЕДНИЙ МЕХАНИЗМ</span><h2>Сколько всего привидений?</h2><p id="finaleFeedback">Впиши ответ — и замки откроются.</p><label for="finaleInput">Твой ответ</label><input id="finaleInput" inputmode="numeric" autocomplete="off" maxlength="3" required><div class="answer-actions"><button id="finaleHint" class="secondary" type="button">Подсказка</button><button class="primary" type="submit">Проверить</button></div><p id="finaleHintText" class="hint" aria-live="polite"></p></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="detectiveMessage" class="detective-message" role="status" aria-live="polite"></div>
+  <script src="js/tasks.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/surveillance.js"></script>
+  <script src="js/chapters.js"></script>
+  <script src="js/interrogation.js"></script>
+  <script src="js/archive.js"></script>
+  <script src="js/workshop.js"></script>
+  <script src="js/tower.js"></script>
+  <script src="js/finale.js"></script>
+  <script src="js/enhancements.js"></script>
+</body>
+</html>
